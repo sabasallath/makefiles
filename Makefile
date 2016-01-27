@@ -8,6 +8,9 @@ BRC=$(shell grep -il "main" *.c  )
 BRO=$(BRC:.c=.o)
 BIN=$(BRC:.c=)
 
+.PHONY: all
+.PHONY: clean
+
 all: $(BIN)
 	
 $(BIN): $(OBJ)
@@ -17,9 +20,8 @@ $(BIN): $(OBJ)
 	$(CC) -o $@ -c $< $(CFLAGS)
 	$(CC) -MM $(CFLAGS) $*.c > $*.d
 
-.PHONY: clean
 clean:
 	@rm -rf *.o *.d
 	@rm -rf $(BIN)
 
--include $(OBJ:.o=.d)
+-include $(SRC:.c=.d)
