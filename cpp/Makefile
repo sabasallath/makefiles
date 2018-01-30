@@ -17,8 +17,8 @@ $(BIN): $(OBJ)
 	$(CC) -o $@ $(filter-out $(filter-out $@.o, $(BRO)), $(OBJ)) $(LDFLAGS)
 	
 %.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
-	$(CC) -MM $(CFLAGS) $*.c > $*.d
+	$(CC) -o $@ -cpp $< $(CFLAGS)
+	$(CC) -MM $(CFLAGS) $*.cpp > $*.d
 
 clean:
 	@rm -rf *.o *.d
