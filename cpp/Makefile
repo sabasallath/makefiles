@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-W -Wall -Werror -Wextra
+CFLAGS=-W -Wall -Werror -Wextra -std=c++11 -g
 LDFLAGS=
 
 SRC=$(wildcard *.cpp)
