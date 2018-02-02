@@ -1,5 +1,5 @@
-CC=g++
-CFLAGS=-W -Wall -Werror -Wextra -std=c++11 -g
+CXX=g++
+CPPFLAGS=-std=c++11 -W -Wall -Werror -Wextra -g
 LDFLAGS=
 
 SRC=$(wildcard *.cpp)
@@ -14,11 +14,11 @@ BIN=$(BRC:.cpp=)
 all: $(BIN)
 
 $(BIN): $(OBJ)
-	$(CC) -o $@ $(filter-out $(filter-out $@.o, $(BRO)), $(OBJ)) $(LDFLAGS)
+	$(CXX) -o $@ $(filter-out $(filter-out $@.o, $(BRO)), $(OBJ)) $(LDFLAGS)
 	
 %.o: %.c
-	$(CC) -o $@ -cpp $< $(CFLAGS)
-	$(CC) -MM $(CFLAGS) $*.cpp > $*.d
+	$(CXX) $(CFLAGS) -o $@ -c $< 
+	$(CXX) -MM $*.cpp > $*.d
 
 clean:
 	@rm -rf *.o *.d
